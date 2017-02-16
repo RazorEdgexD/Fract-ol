@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: aosobliv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/08 13:28:10 by aosobliv          #+#    #+#              #
-#    Updated: 2017/02/14 20:44:13 by aosobliv         ###   ########.fr        #
+#    Updated: 2017/02/16 12:37:18 by aosobliv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,11 @@ SRCS = main.c										\
 			kox.c									\
 			mendel.c								\
 			julia.c									\
+			tri_serp.c								\
 			burningship.c							\
 			ft_hooks.c								\
+			carpet_serp.c							\
+			barn.c									\
 
 BINS = $(SRCS:.c=.o)
 
@@ -44,15 +47,16 @@ libfclean:
 	make -C libft/ fclean
 
 $(NAME): $(BINS)
+	make -C libft/
 	gcc -o $(NAME) $(BINS) $(FLAGS) $(MLX) $(LIB)
 
 %.o: %.c
 	gcc $(FLAGS) -c -o $@ $<
 
-clean:
+clean: libclean
 	/bin/rm -f $(BINS)
 
-fclean: clean
+fclean: libfclean clean
 	/bin/rm -f $(NAME)
 
 re: fclean all
