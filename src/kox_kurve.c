@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kox.c                                              :+:      :+:    :+:   */
+/*   kox_kurve.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aosobliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/16 12:39:17 by aosobliv          #+#    #+#             */
-/*   Updated: 2017/02/16 12:39:31 by aosobliv         ###   ########.fr       */
+/*   Created: 2017/02/17 14:28:54 by aosobliv          #+#    #+#             */
+/*   Updated: 2017/02/17 14:28:55 by aosobliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_kox(t_frac *frac)
+void	init_kox_k(t_frac *frac)
 {
 	frac->draw.point1.x = (200 + -frac->shiftx) * frac->zoom;
 	frac->draw.point1.y = (500 + -frac->shifty) * frac->zoom;
@@ -21,7 +21,7 @@ void	init_kox(t_frac *frac)
 	frac->color = 255;
 }
 
-t_tr	init_p(t_point p1, t_point p2)
+t_tr	init_k(t_point p1, t_point p2)
 {
 	t_tr	new;
 
@@ -32,7 +32,7 @@ t_tr	init_p(t_point p1, t_point p2)
 	return (new);
 }
 
-t_tr	fill_k(int x1, int y1, int x2, int y2)
+t_tr	fill_k_k(int x1, int y1, int x2, int y2)
 {
 	t_tr	new;
 
@@ -43,10 +43,11 @@ t_tr	fill_k(int x1, int y1, int x2, int y2)
 	return (new);
 }
 
-void	draw_k(t_frac *frac, int i, t_tr t)
+void	draw_k_k(t_frac *frac, int i, t_tr t)
 {
-	t_point b;
-	t_point d;
+	t_point	b;
+	t_point	d;
+	t_point	a;
 
 	if (i == 0)
 		ft_brezen(frac, &frac->draw, &t.p1, &t.p2);
@@ -56,19 +57,23 @@ void	draw_k(t_frac *frac, int i, t_tr t)
 		b.y = t.p1.y + (t.p2.y - t.p1.y) / 3;
 		d.x = t.p1.x + (2 * (t.p2.x - t.p1.x)) / 3;
 		d.y = t.p1.y + (2 * (t.p2.y - t.p1.y)) / 3;
-		t.p3.x = b.x + (d.x - b.x) * cos60 - sin60 * (d.y - b.y);
-		t.p3.y = b.y + (d.x - b.x) * sin60 + cos60 * (d.y - b.y);
-		draw_k(frac, i - 1, fill_k(t.p1.x, t.p1.y, b.x, b.y));
-		draw_k(frac, i - 1, fill_k(b.x, b.y, t.p3.x, t.p3.y));
-		draw_k(frac, i - 1, fill_k(t.p3.x, t.p3.y, d.x, d.y));
-		draw_k(frac, i - 1, fill_k(d.x, d.y, t.p2.x, t.p2.y));
+		t.p3.x = b.x - 1 * (d.y - b.y);
+		t.p3.y = b.y - (d.x - b.x);
+		a.x = d.x - 1 * (d.y - b.y);
+		a.y = d.y + (b.x - d.x);
+		draw_k_k(frac, i - 1, fill_k_k(t.p1.x, t.p1.y, b.x, b.y));
+		draw_k_k(frac, i - 1, fill_k_k(b.x, b.y, t.p3.x, t.p3.y));
+		draw_k_k(frac, i - 1, fill_k_k(t.p3.x, t.p3.y, a.x, a.y));
+		draw_k_k(frac, i - 1, fill_k_k(a.x, a.y, d.x, d.y));
+		draw_k_k(frac, i - 1, fill_k_k(d.x, d.y, t.p2.x, t.p2.y));
 	}
 }
 
-void	kox(t_frac *frac)
+void	kox_kurve(t_frac *frac)
 {
-	init_kox(frac);
-	draw_k(frac, frac->iter_line, init_p(frac->draw.point1, frac->draw.point2));
+	init_kox_k(frac);
+	draw_k_k(frac, frac->iter_line, init_k(frac->draw.point1,
+		frac->draw.point2));
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);
 	ft_putstr("Printing...\n");
 	ft_hooks(frac);

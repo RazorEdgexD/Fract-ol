@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mendel.c                                           :+:      :+:    :+:   */
+/*   sinus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aosobliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/12 15:44:12 by aosobliv          #+#    #+#             */
-/*   Updated: 2017/02/12 15:44:24 by aosobliv         ###   ########.fr       */
+/*   Created: 2017/02/17 16:09:21 by aosobliv          #+#    #+#             */
+/*   Updated: 2017/02/17 16:09:23 by aosobliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	calc_madel(t_frac *frac, int i, int j)
+void	calc_sin(t_frac *frac, int i, int j)
 {
 	double	x;
 	double	y;
@@ -24,6 +24,8 @@ void	calc_madel(t_frac *frac, int i, int j)
 	iteration = 0;
 	while (x * x + y * y < 4. && iteration < frac->iter)
 	{
+		x = sin(x);
+		y = sin(y);
 		x_tmp = x * x - y * y + frac->x_win;
 		y = 2 * x * y + frac->y_win;
 		x = x_tmp;
@@ -35,7 +37,7 @@ void	calc_madel(t_frac *frac, int i, int j)
 		ft_image_pixel_put(frac, j, i, 0);
 }
 
-void	mandel(t_frac *frac)
+void	sinus(t_frac *frac)
 {
 	int		i;
 	int		j;
@@ -48,13 +50,13 @@ void	mandel(t_frac *frac)
 	while (i <= WIN_Y)
 	{
 		j = 0;
-		frac->y_win = frac->zoom * (((i + frac->shifty - WIN_Y / 2.) * 4.)
-			/ WIN_Y);
+		frac->y_win = frac->zoom * ((i + frac->shifty - WIN_Y / 2.) * 4.)
+			/ WIN_Y;
 		while (j <= WIN_X)
 		{
-			frac->x_win = frac->zoom * (((j + frac->shiftx - WIN_X / 2.) * 4.)
-				/ WIN_X);
-			calc_madel(frac, i, j);
+			frac->x_win = frac->zoom * ((j + frac->shiftx - WIN_X / 2.) * 4.)
+				/ WIN_X;
+			calc_sin(frac, i, j);
 			j++;
 		}
 		i++;

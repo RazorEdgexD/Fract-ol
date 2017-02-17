@@ -14,20 +14,15 @@
 
 void	init_serp(t_frac *frac)
 {
-	frac->draw.point1.x = 200;
-	frac->draw.point1.y = 800;
-	frac->draw.point2.x = 500;
-	frac->draw.point2.y = 200;
-	frac->draw.point3.x = 800;
-	frac->draw.point3.y = 800;
-	frac->color = 16777215;
+	frac->draw.point1.x = (200 - frac->shiftx) * frac->zoom;
+	frac->draw.point1.y = (800 - frac->shifty) * frac->zoom;
+	frac->draw.point2.x = (500 - frac->shiftx) * frac->zoom;
+	frac->draw.point2.y = (200 - frac->shifty) * frac->zoom;
+	frac->draw.point3.x = (800 - frac->shiftx) * frac->zoom;
+	frac->draw.point3.y = (800 - frac->shifty) * frac->zoom;
+	frac->color = 255;
 	frac->x_win = 0;
 	frac->y_win = 0;
-	frac->iter_line = 5;
-	frac->mlx = mlx_init();
-	frac->win = mlx_new_window(frac->mlx, WIN_X, WIN_Y
-		, "Fractol(Triangle Sierpinski)");
-	frac->image = mlx_new_image(frac->mlx, WIN_X, WIN_Y);
 }
 
 t_tr	init_tr(t_point p1, t_point p2, t_point p3)
@@ -72,7 +67,6 @@ void	tri_serp(t_frac *frac)
 	draw_tri(frac, frac->iter_line, init_tr(frac->draw.point1,
 		frac->draw.point2, frac->draw.point3));
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);
-	ft_hooks(frac);
 	ft_putstr("Printing...\n");
-	mlx_loop(frac->mlx);
+	ft_hooks(frac);
 }

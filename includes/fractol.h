@@ -14,16 +14,13 @@
 # define FRACTOL_H
 # define WIN_X 1000
 # define WIN_Y 1000
-# define sin60 -0.86602540378
-# define cos60 0.5
+# define SIN60 -0.86602540378
+# define SIN60 0.5
 # define RAD 0.0175433
 
 # include "../libft/libft.h"
 # include <math.h>
 # include "mlx.h"
-
-
-#include <stdio.h>
 
 typedef struct		s_point
 {
@@ -56,36 +53,47 @@ typedef struct		s_tr
 
 typedef struct		s_frac
 {
-	int				d_barn;
+	int				d_kox_k;
 	int				d_julia;
 	int				d_mandel;
 	int				d_kox;
 	int				d_burning;
 	int				d_tri;
 	int				d_carpet;
+	int				d_sin;
 	double			x_win;
 	double			y_win;
 	int				color;
 	int				iter_line;
+	int				iter;
+	double			c_r;
+	double			c_i;
 	void			*win;
 	void			*mlx;
 	void			*image;
 	int				shift;
 	int				rad;
+	double			zoom;
+	double			m_zoom;
+	int				shiftx;
+	int				shifty;
 
 	struct s_draw	draw;
 }					t_frac;
 
-void			ft_image_pixel_put(t_frac *frac, int x, int y, int rgb);
-int				ft_hooks(t_frac *frac);
-void			ft_calc_point(t_tr t, t_frac *frac);
-void			mandel(t_frac *frac);
-void			burningship(t_frac *frac);
-void			julia(t_frac *frac);
-void			tri_serp(t_frac *frac);
-void			carp_serp(t_frac *frac);
-void			kox(t_frac *frac);
-void			barnsley(t_frac *frac);
-void			ft_brezen(t_frac *frac, t_draw *draw, t_point *t0, t_point *t1);
+void				ft_image_pixel_put(t_frac *frac, int x, int y, int rgb);
+int					ft_hooks(t_frac *frac);
+void				ft_calc_point(t_tr t, t_frac *frac);
+void				mandel(t_frac *frac);
+void				burningship(t_frac *frac);
+void				julia(t_frac *frac);
+void				tri_serp(t_frac *frac);
+void				carp_serp(t_frac *frac);
+void				kox(t_frac *frac);
+void				kox_kurve(t_frac *frac);
+void				sinus(t_frac *frac);
+void				check_draw(t_frac *frac);
+void				ft_brezen(t_frac *frac, t_draw *draw, t_point *t0,
+						t_point *t1);
 
 #endif

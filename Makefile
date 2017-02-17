@@ -6,7 +6,7 @@
 #    By: aosobliv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/08 13:28:10 by aosobliv          #+#    #+#              #
-#    Updated: 2017/02/16 12:37:18 by aosobliv         ###   ########.fr        #
+#    Updated: 2017/02/17 16:30:19 by aosobliv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ IDIR = includes/
 
 VPATH = src:includes
 
-FLAGS = -Wall -Wextra -Werror -I$(IDIR) -g
+FLAGS = -O3 -Wall -Wextra -Werror -I$(IDIR) -g
 
 MLX = -lmlx -framework AppKit -framework OpenGl
 
@@ -31,7 +31,8 @@ SRCS = main.c										\
 			burningship.c							\
 			ft_hooks.c								\
 			carpet_serp.c							\
-			barn.c									\
+			kox_kurve.c								\
+			sinus.c									\
 
 BINS = $(SRCS:.c=.o)
 

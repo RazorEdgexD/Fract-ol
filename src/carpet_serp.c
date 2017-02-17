@@ -14,22 +14,17 @@
 
 void	init_carp(t_frac *frac)
 {
-	frac->draw.point1.x = 200;
-	frac->draw.point1.y = 200;
-	frac->draw.point2.x = 800;
-	frac->draw.point2.y = 200;
-	frac->draw.point3.x = 800;
-	frac->draw.point3.y = 800;
-	frac->draw.point4.x = 200;
-	frac->draw.point4.y = 800;
+	frac->draw.point1.x = (200 + -frac->shiftx) * frac->zoom;
+	frac->draw.point1.y = (200 + -frac->shifty) * frac->zoom;
+	frac->draw.point2.x = (800 + -frac->shiftx) * frac->zoom;
+	frac->draw.point2.y = (200 + -frac->shifty) * frac->zoom;
+	frac->draw.point3.x = (800 + -frac->shiftx) * frac->zoom;
+	frac->draw.point3.y = (800 + -frac->shifty) * frac->zoom;
+	frac->draw.point4.x = (200 + -frac->shiftx) * frac->zoom;
+	frac->draw.point4.y = (800 + -frac->shifty) * frac->zoom;
 	frac->color = 255;
 	frac->x_win = 0;
 	frac->y_win = 0;
-	frac->iter_line = 5;
-	frac->mlx = mlx_init();
-	frac->win = mlx_new_window(frac->mlx, WIN_X, WIN_Y
-		, "Fractol (Carpet Sierpinski)");
-	frac->image = mlx_new_image(frac->mlx, WIN_X, WIN_Y);
 }
 
 t_tr	new_carp(t_point p1, t_point p2, t_point p3, t_point p4)
@@ -93,14 +88,9 @@ void	draw(t_frac *frac, int i, t_tr t)
 void	carp_serp(t_frac *frac)
 {
 	init_carp(frac);
-	ft_brezen(frac, &frac->draw, &frac->draw.point1, &frac->draw.point2);
-	ft_brezen(frac, &frac->draw, &frac->draw.point2, &frac->draw.point3);
-	ft_brezen(frac, &frac->draw, &frac->draw.point3, &frac->draw.point4);
-	ft_brezen(frac, &frac->draw, &frac->draw.point1, &frac->draw.point4);
 	draw(frac, frac->iter_line, new_carp(frac->draw.point1,
 		frac->draw.point2, frac->draw.point3, frac->draw.point4));
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);
-	ft_hooks(frac);
 	ft_putstr("Printing...\n");
-	mlx_loop(frac->mlx);
+	ft_hooks(frac);
 }
