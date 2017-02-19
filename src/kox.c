@@ -56,8 +56,8 @@ void	draw_k(t_frac *frac, int i, t_tr t)
 		b.y = t.p1.y + (t.p2.y - t.p1.y) / 3;
 		d.x = t.p1.x + (2 * (t.p2.x - t.p1.x)) / 3;
 		d.y = t.p1.y + (2 * (t.p2.y - t.p1.y)) / 3;
-		t.p3.x = b.x + (d.x - b.x) * cos60 - sin60 * (d.y - b.y);
-		t.p3.y = b.y + (d.x - b.x) * sin60 + cos60 * (d.y - b.y);
+		t.p3.x = b.x + (d.x - b.x) * COS60 - SIN60 * (d.y - b.y);
+		t.p3.y = b.y + (d.x - b.x) * SIN60 + COS60 * (d.y - b.y);
 		draw_k(frac, i - 1, fill_k(t.p1.x, t.p1.y, b.x, b.y));
 		draw_k(frac, i - 1, fill_k(b.x, b.y, t.p3.x, t.p3.y));
 		draw_k(frac, i - 1, fill_k(t.p3.x, t.p3.y, d.x, d.y));

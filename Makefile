@@ -6,7 +6,7 @@
 #    By: aosobliv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/08 13:28:10 by aosobliv          #+#    #+#              #
-#    Updated: 2017/02/17 16:30:19 by aosobliv         ###   ########.fr        #
+#    Updated: 2017/02/19 14:40:37 by aosobliv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS = main.c										\
 			carpet_serp.c							\
 			kox_kurve.c								\
 			sinus.c									\
+			put_info.c								\
 
 BINS = $(SRCS:.c=.o)
 

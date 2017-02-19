@@ -60,6 +60,5 @@ void	julia(t_frac *frac)
 		i++;
 	}
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);
-	ft_putstr("Printing...\n");
 	ft_hooks(frac);
 }

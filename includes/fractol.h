@@ -15,12 +15,14 @@
 # define WIN_X 1000
 # define WIN_Y 1000
 # define SIN60 -0.86602540378
-# define SIN60 0.5
+# define COS60 0.5
 # define RAD 0.0175433
 
 # include "../libft/libft.h"
 # include <math.h>
 # include "mlx.h"
+
+#include <stdio.h>
 
 typedef struct		s_point
 {
@@ -71,12 +73,20 @@ typedef struct		s_frac
 	void			*win;
 	void			*mlx;
 	void			*image;
-	int				shift;
+	double			shift;
 	int				rad;
 	double			zoom;
 	double			m_zoom;
-	int				shiftx;
-	int				shifty;
+	double			shiftx;
+	double			shifty;
+	double			m_shift_x;
+	double			m_shift_y;
+	double			m_shift_dx;
+	double			m_shift_dy;
+	double			m_shx;
+	double			m_shy;
+	int				text_y;
+	char			*name;
 
 	struct s_draw	draw;
 }					t_frac;
@@ -93,6 +103,8 @@ void				kox(t_frac *frac);
 void				kox_kurve(t_frac *frac);
 void				sinus(t_frac *frac);
 void				check_draw(t_frac *frac);
+void				ft_mouse_zoom(t_frac * frac);
+void				ft_print_info(t_frac *frac);
 void				ft_brezen(t_frac *frac, t_draw *draw, t_point *t0,
 						t_point *t1);
 

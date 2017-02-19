@@ -48,18 +48,29 @@ void	mandel(t_frac *frac)
 	while (i <= WIN_Y)
 	{
 		j = 0;
-		frac->y_win = frac->zoom * (((i + frac->shifty - WIN_Y / 2.) * 4.)
-			/ WIN_Y);
+		frac->y_win = ((i + frac->shifty - 500) * 4. + (500 * 1.)
+					* frac->m_shx * frac->zoom) / (500 * frac->zoom);
 		while (j <= WIN_X)
 		{
-			frac->x_win = frac->zoom * (((j + frac->shiftx - WIN_X / 2.) * 4.)
-				/ WIN_X);
+			frac->x_win = ((j + frac->shiftx - 500) * 4. + (500 * 1.)
+						* frac->m_shy * frac->zoom) / (500 * frac->zoom);
 			calc_madel(frac, i, j);
 			j++;
 		}
 		i++;
 	}
+	frac->name = "Mandel";
+	ft_image_pixel_put(frac, 500, 500, 0xFFFFFF);
+	ft_image_pixel_put(frac, 501, 500, 0xFFFFFF);
+	ft_image_pixel_put(frac, 502, 500, 0xFFFFFF);
+	ft_image_pixel_put(frac, 500, 501, 0xFFFFFF);
+	ft_image_pixel_put(frac, 500, 502, 0xFFFFFF);
+	ft_image_pixel_put(frac, 500, 499, 0xFFFFFF);
+	ft_image_pixel_put(frac, 500, 498, 0xFFFFFF);
+	ft_image_pixel_put(frac, 499, 500, 0xFFFFFF);
+	ft_image_pixel_put(frac, 498, 500, 0xFFFFFF);
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);
-	ft_putstr("Printing...\n");
+	ft_print_info(frac);
+//	printf("zoom=%f x = %d | y = %d\n", frac->zoom, frac->m_shift_x, frac->m_shift_y);
 	ft_hooks(frac);
 }

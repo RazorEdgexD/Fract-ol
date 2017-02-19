@@ -60,21 +60,40 @@ int		move_mouse(int x, int y, t_frac *frac)
 	return (0);
 }
 
-/*
+
 int		key_mouse(int key, int x, int y, t_frac * frac)
 {
 	if (key == 4)
 	{
-
+		frac->m_zoom = 1;
+		frac->m_shift_x = (x * 1. - WIN_X / 2.) * 4. / (WIN_X * frac->zoom);
+		frac->m_shift_y = (y * 1. - WIN_X / 2.) * 4. / (WIN_X * frac->zoom);
+		frac->m_shift_dx = (x * 1. - WIN_X / 2.) * 4. / (WIN_X);
+		frac->m_shift_dy = (y * 1. - WIN_Y / 2.) * 4. / (WIN_Y);
 	}
+	if (key == 5)
+	{
+		frac->m_zoom = 2;
+		frac->m_shift_x = (x * 1. - WIN_X / 2.) * 4. / (WIN_X * frac->zoom);
+		frac->m_shift_y = (y * 1. - WIN_X / 2.) * 4. / (WIN_X * frac->zoom);
+		frac->m_shift_dx = (x * 1. - WIN_X / 2.) * 4. / (WIN_X);
+		frac->m_shift_dy = (y * 1. - WIN_Y / 2.) * 4. / (WIN_Y);
+	}
+	ft_mouse_zoom(frac);
+	mlx_destroy_image(frac->mlx, frac->image);
+	//printf("zoom=%f x = %d | y = %d\n", frac->zoom, x, y);
+	frac->image = mlx_new_image(frac->mlx, WIN_X, WIN_Y);
+	check_draw(frac);
+	return (0);
 }
-*/
+
 
 int		ft_hooks(t_frac *frac)
 {
 	mlx_key_hook(frac->win, keys_for_win1, frac);
-	mlx_hook(frac->win, 6, 0, move_mouse, frac);
-//	mlx_mouse_hook(frac->win, key_mouse, frac);
+	if (frac->d_julia == 1)
+		mlx_hook(frac->win, 6, 0, move_mouse, frac);
+	mlx_mouse_hook(frac->win, key_mouse, frac);
 	mlx_loop(frac->mlx);
 	return (0);
 }

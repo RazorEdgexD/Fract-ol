@@ -30,6 +30,12 @@ void	init_frac(t_frac *frac)
 	frac->c_r = 0.285;
 	frac->c_i = 0.01;
 	frac->m_zoom = 1;
+	frac->m_shift_x = 0;
+	frac->m_shift_y = 0;
+	frac->m_shift_dx = 0;
+	frac->m_shift_dy = 0;
+	frac->m_shx = 0;
+	frac->m_shy = 0;
 }
 
 void	draw_error(void)
