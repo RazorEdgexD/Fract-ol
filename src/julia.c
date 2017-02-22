@@ -42,23 +42,22 @@ void	julia(t_frac *frac)
 
 	i = 0;
 	j = 0;
-	frac->color = 272;
-	frac->x_win = 0;
-	frac->y_win = 0;
 	while (i <= WIN_Y)
 	{
 		j = 0;
-		frac->y_win = frac->zoom * ((i + frac->shifty - WIN_Y / 2.) * 4.)
-			/ WIN_Y;
+		frac->y_win = ((i + frac->shifty - WIN_Y / 2) * 4. + (WIN_Y * 1.)
+				* frac->m_shy * frac->zoom) / (WIN_Y * frac->zoom);
 		while (j <= WIN_X)
 		{
-			frac->x_win = frac->zoom * ((j + frac->shiftx - WIN_X / 2.) * 4.)
-				/ WIN_X;
+			frac->x_win = ((j + frac->shiftx - 500.) * 4. + (1000. * 1.)
+					* frac->m_shx * frac->zoom) / (1000. * frac->zoom);
 			calc_julia(frac, i, j);
 			j++;
 		}
 		i++;
 	}
+	frac->name = "Julia";
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);
+	ft_print_info(frac);
 	ft_hooks(frac);
 }

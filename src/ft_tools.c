@@ -65,20 +65,28 @@ void	ft_brezen(t_frac *frac, t_draw *draw, t_point *t0, t_point *t1)
 	t0->y = y0;
 }
 
+int		ft_change_color(t_frac *frac)
+{
+	if (frac->color == 2050)
+		frac->color = 272;
+	else if (frac->color == 272)
+		frac->color = 2050;
+	return (0);
+}
+
 void	ft_mouse_zoom(t_frac *frac)
 {
 	if (frac->m_zoom == 1)
 	{
 		frac->zoom *= 1.1;
-		frac->m_shx = frac->m_shift_x - frac->m_shift_dx / frac->zoom;
-		frac->m_shy = frac->m_shift_y - frac->m_shift_dy / frac->zoom;
+		frac->m_shx += frac->m_shift_x - frac->m_shift_dx / frac->zoom;
+		frac->m_shy += frac->m_shift_y - frac->m_shift_dy / frac->zoom;
 	}
 	if (frac->m_zoom == 2)
 	{
 		frac->zoom /= 1.1;
-		frac->m_shx = frac->m_shift_x - frac->m_shift_dx / frac->zoom;
-		frac->m_shy = frac->m_shift_y - frac->m_shift_dy / frac->zoom;
+		frac->m_shx += frac->m_shift_x - frac->m_shift_dx / frac->zoom;
+		frac->m_shy += frac->m_shift_y - frac->m_shift_dy / frac->zoom;
 	}
-	printf("shx = %f | shy = %f\n", frac->m_shx, frac->m_shy);
 	frac->m_zoom = 0;
 }

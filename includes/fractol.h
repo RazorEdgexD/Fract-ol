@@ -63,6 +63,7 @@ typedef struct		s_frac
 	int				d_tri;
 	int				d_carpet;
 	int				d_sin;
+	int				d_bio;
 	double			x_win;
 	double			y_win;
 	int				color;
@@ -86,6 +87,7 @@ typedef struct		s_frac
 	double			m_shx;
 	double			m_shy;
 	int				text_y;
+	int				mouse_on;
 	char			*name;
 
 	struct s_draw	draw;
@@ -105,6 +107,9 @@ void				sinus(t_frac *frac);
 void				check_draw(t_frac *frac);
 void				ft_mouse_zoom(t_frac * frac);
 void				ft_print_info(t_frac *frac);
+void				ft_print_info2(t_frac *frac);
+void				bio(t_frac *frac);
+int					ft_change_color(t_frac *frac);
 void				ft_brezen(t_frac *frac, t_draw *draw, t_point *t0,
 						t_point *t1);
 

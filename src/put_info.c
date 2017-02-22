@@ -23,14 +23,35 @@ void	ft_print_info(t_frac *frac)
 	frac->text_y = 20;
 	ft_print_str(frac, ft_strjoin("Fractal = ", frac->name));
 	ft_print_str(frac, ft_strjoin("Iteration = ", ft_itoa(frac->iter)));
-	ft_print_str(frac, ft_strjoin(ft_strjoin("Zoom = x", ft_itoa(frac->zoom)),
-		ft_strjoin(".", ft_itoa((int)(frac->zoom * 10) % 10))));
+	if (frac->zoom < 2000000000)
+		ft_print_str(frac, ft_strjoin("Zoom = x", ft_itoa(frac->zoom)));
+	else
+		ft_print_str(frac, "Zoom = Over99999");
 	ft_print_str(frac, "~~~~~~~~~~~~~Key~~~~~~~~~~~");
-	ft_print_str(frac, "Mouse Scroll - Change zoom");
-	ft_print_str(frac, "Mouse Move   - Rotation on Julia");
-	ft_print_str(frac, "'1','2'      - Change iteration");
-	ft_print_str(frac, "'pU','pD'    - Change iteration line Fractal");
-	ft_print_str(frac, "'-', '+'     - Zoom in center");
-	ft_print_str(frac, "'Arrows'     - Move");
-	ft_print_str(frac, "'c'          - Change color");
+	ft_print_str(frac, "Mouse Scroll  - Change zoom");
+	ft_print_str(frac, "Mouse Move (3)- Rotation on Julia");
+	ft_print_str(frac, "'1','2'       - Change iteration");
+	ft_print_str(frac, "'-', '+'      - Zoom in center");
+	ft_print_str(frac, "'Arrows'      - Move");
+	ft_print_str(frac, "'c'           - Change color");
+	ft_print_str(frac, "'5'           - Restart");
+}
+
+void	ft_print_info2(t_frac *frac)
+{
+	frac->text_y = 20;
+	ft_print_str(frac, ft_strjoin("Fractal = ", frac->name));
+	ft_print_str(frac, ft_strjoin("Iteration = ", ft_itoa(frac->iter_line)));
+	if (frac->zoom < 2000000000)
+		ft_print_str(frac, ft_strjoin("Zoom = x", ft_itoa(frac->zoom)));
+	else
+		ft_print_str(frac, "Zoom = Over99999");
+	ft_print_str(frac, "~~~~~~~~~~~~~Key~~~~~~~~~~~");
+	ft_print_str(frac, "Mouse Scroll  - Change zoom");
+	ft_print_str(frac, "Mouse Move (3)- Rotation on Julia");
+	ft_print_str(frac, "'pU','pD'     - Change iteration line Fractal");
+	ft_print_str(frac, "'-', '+'      - Zoom in center");
+	ft_print_str(frac, "'Arrows'      - Move");
+	ft_print_str(frac, "'c'           - Change color");
+	ft_print_str(frac, "'5'           - Restart");
 }

@@ -22,6 +22,7 @@ void	init_frac(t_frac *frac)
 	frac->d_carpet = 0;
 	frac->d_kox_k = 0;
 	frac->d_sin = 0;
+	frac->d_bio = 0;
 	frac->zoom = 1;
 	frac->shiftx = 0;
 	frac->shifty = 0;
@@ -34,8 +35,9 @@ void	init_frac(t_frac *frac)
 	frac->m_shift_y = 0;
 	frac->m_shift_dx = 0;
 	frac->m_shift_dy = 0;
-	frac->m_shx = 0;
-	frac->m_shy = 0;
+	frac->m_shx = 0.;
+	frac->m_shy = 0.;
+	frac->mouse_on = 0;
 }
 
 void	draw_error(void)
@@ -43,7 +45,7 @@ void	draw_error(void)
 	ft_putstr("Usage ./fractol fractal_number\nList of availble fractals:\n");
 	ft_putstr("Triangle Sierpinski - 1\nJulia - 2\nMandel - 3\nKox - 4\nBurni");
 	ft_putstr("ngShip - 5\nCarpet Sierpinski - 6\nKox kurve - 7\nSinusoid - 8");
-	ft_putstr("\n");
+	ft_putstr("\nBio - 9\n");
 	exit(666);
 }
 
@@ -68,9 +70,11 @@ void	check_type(char *argv1, char *argv2, t_frac *frac)
 		frac->d_kox_k = 1;
 	if (!ft_strcmp(argv1, "8") || !ft_strcmp(argv2, "8"))
 		frac->d_sin = 1;
+	if (!ft_strcmp(argv1, "9") || !ft_strcmp(argv2, "9"))
+		frac->d_bio = 1;
 	if (frac->d_julia == 0 && frac->d_kox == 0 && frac->d_mandel == 0 &&
 		frac->d_burning == 0 && frac->d_tri == 0 && frac->d_carpet == 0 &&
-		frac->d_kox_k == 0 && frac->d_sin == 0)
+		frac->d_kox_k == 0 && frac->d_sin == 0 && frac->d_bio == 0)
 		draw_error();
 }
 
@@ -92,6 +96,8 @@ void	check_draw(t_frac *frac)
 		kox_kurve(frac);
 	if (frac->d_sin == 1)
 		sinus(frac);
+	if (frac->d_bio == 1)
+		bio(frac);
 }
 
 int		main(int argc, char **argv)
@@ -102,6 +108,9 @@ int		main(int argc, char **argv)
 	{
 		check_type(argv[1], argv[2], &frac);
 		frac.mlx = mlx_init();
+		frac.color = 272;
+		frac.x_win = 0;
+		frac.y_win = 0;
 		frac.win = mlx_new_window(frac.mlx, WIN_X, WIN_Y, "Fractol");
 		frac.image = mlx_new_image(frac.mlx, WIN_X, WIN_Y);
 		check_draw(&frac);
