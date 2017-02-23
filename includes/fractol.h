@@ -109,6 +109,7 @@ void				ft_mouse_zoom(t_frac * frac);
 void				ft_print_info(t_frac *frac);
 void				ft_print_info2(t_frac *frac);
 void				bio(t_frac *frac);
+int					close_x(void *par);
 int					ft_change_color(t_frac *frac);
 void				ft_brezen(t_frac *frac, t_draw *draw, t_point *t0,
 						t_point *t1);

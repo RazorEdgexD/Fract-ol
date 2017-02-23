@@ -117,6 +117,7 @@ int		ft_hooks(t_frac *frac)
 	mlx_key_hook(frac->win, keys_for_win1, frac);
 	if (frac->d_julia == 1)
 		mlx_hook(frac->win, 6, 0, move_mouse, frac);
+	mlx_hook(data->win, 17, 0L, close_x, data);
 	mlx_mouse_hook(frac->win, key_mouse, frac);
 	mlx_loop(frac->mlx);
 	return (0);
