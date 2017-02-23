@@ -14,12 +14,18 @@
 
 void	init_serp(t_frac *frac)
 {
-	frac->draw.point1.x = (200 - frac->shiftx) * frac->zoom;
-	frac->draw.point1.y = (800 - frac->shifty) * frac->zoom;
-	frac->draw.point2.x = (500 - frac->shiftx) * frac->zoom;
-	frac->draw.point2.y = (200 - frac->shifty) * frac->zoom;
-	frac->draw.point3.x = (800 - frac->shiftx) * frac->zoom;
-	frac->draw.point3.y = (800 - frac->shifty) * frac->zoom;
+	frac->draw.point1.x = (0.) * WIN_X * frac->zoom) / 4 +
+			(WIN_X / 2) - (frac->m_shx * WIN_X * frac->zoom) / 4
+	frac->draw.point1.y = (-0.5) * WIN_Y * frac->zoom) / 4 +
+			(WIN_Y / 2) - (frac->m_shy * WIN_Y * frac->zoom) / 4);
+	frac->draw.point2.x = (-0.5) * WIN_X * frac->zoom) / 4 +
+			(WIN_X / 2) - (frac->m_shx * WIN_X * frac->zoom) / 4
+	frac->draw.point2.y = (0.5) * WIN_Y * frac->zoom) / 4 +
+			(WIN_Y / 2) - (frac->m_shy * WIN_Y * frac->zoom) / 4);
+	frac->draw.point3.x = (0.5) * WIN_X * frac->zoom) / 4 +
+			(WIN_X / 2) - (frac->m_shx * WIN_X * frac->zoom) / 4
+	frac->draw.point3.y = (0.5) * WIN_Y * frac->zoom) / 4 +
+			(WIN_Y / 2) - (frac->m_shy * WIN_Y * frac->zoom) / 4);
 	frac->color = 255;
 	frac->x_win = 0;
 	frac->y_win = 0;
