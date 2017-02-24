@@ -14,18 +14,19 @@
 
 void	init_serp(t_frac *frac)
 {
-	frac->draw.point1.x = (0.) * WIN_X * frac->zoom) / 4 +
-			(WIN_X / 2) - (frac->m_shx * WIN_X * frac->zoom) / 4
-	frac->draw.point1.y = (-0.5) * WIN_Y * frac->zoom) / 4 +
-			(WIN_Y / 2) - (frac->m_shy * WIN_Y * frac->zoom) / 4);
-	frac->draw.point2.x = (-0.5) * WIN_X * frac->zoom) / 4 +
-			(WIN_X / 2) - (frac->m_shx * WIN_X * frac->zoom) / 4
-	frac->draw.point2.y = (0.5) * WIN_Y * frac->zoom) / 4 +
-			(WIN_Y / 2) - (frac->m_shy * WIN_Y * frac->zoom) / 4);
-	frac->draw.point3.x = (0.5) * WIN_X * frac->zoom) / 4 +
-			(WIN_X / 2) - (frac->m_shx * WIN_X * frac->zoom) / 4
-	frac->draw.point3.y = (0.5) * WIN_Y * frac->zoom) / 4 +
-			(WIN_Y / 2) - (frac->m_shy * WIN_Y * frac->zoom) / 4);
+	frac->draw.point1.x = (0. * WIN_X * frac->zoom) / 4 + (WIN_X / 2) -
+		(frac->m_shx * WIN_X * frac->zoom) / 4 - frac->shiftx * frac->zoom;
+	frac->draw.point1.y = (-0.5 * WIN_Y * frac->zoom) / 4 + (WIN_Y / 2) -
+		(frac->m_shy * WIN_Y * frac->zoom) / 4 - frac->shifty * frac->zoom;
+	frac->draw.point2.x = (-0.5 * WIN_X * frac->zoom) / 4 + (WIN_X / 2) -
+		(frac->m_shx * WIN_X * frac->zoom) / 4 - frac->shiftx * frac->zoom;
+	frac->draw.point2.y = (0.5 * WIN_Y * frac->zoom) / 4 + (WIN_Y / 2) -
+		(frac->m_shy * WIN_Y * frac->zoom) / 4 - frac->shifty * frac->zoom;
+	frac->draw.point3.x = (0.5 * WIN_X * frac->zoom) / 4 + (WIN_X / 2) -
+		(frac->m_shx * WIN_X * frac->zoom) / 4 - frac->shiftx * frac->zoom;
+	frac->draw.point3.y = (0.5 * WIN_Y * frac->zoom) / 4 + (WIN_Y / 2) -
+		(frac->m_shy * WIN_Y * frac->zoom) / 4 - frac->shifty * frac->zoom;
+	frac->name = "Triangle Sierpinski";
 	frac->color = 255;
 	frac->x_win = 0;
 	frac->y_win = 0;
@@ -73,6 +74,6 @@ void	tri_serp(t_frac *frac)
 	draw_tri(frac, frac->iter_line, init_tr(frac->draw.point1,
 		frac->draw.point2, frac->draw.point3));
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);
-	ft_putstr("Printing...\n");
+	ft_print_info2(frac);
 	ft_hooks(frac);
 }

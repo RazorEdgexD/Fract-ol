@@ -14,11 +14,20 @@
 
 void	init_kox_k(t_frac *frac)
 {
-	frac->draw.point1.x = (200 + -frac->shiftx) * frac->zoom;
-	frac->draw.point1.y = (500 + -frac->shifty) * frac->zoom;
-	frac->draw.point2.x = (800 + -frac->shiftx) * frac->zoom;
-	frac->draw.point2.y = (500 + -frac->shifty) * frac->zoom;
+	frac->draw.point1.x = (-1. * WIN_X * frac->zoom) / 4 +
+		(WIN_X / 2) - (frac->m_shx * WIN_X * frac->zoom) / 4 - frac->shiftx *
+			frac->zoom;
+	frac->draw.point1.y = (0. * WIN_Y * frac->zoom) / 4 +
+		(WIN_Y / 2) - (frac->m_shy * WIN_Y * frac->zoom) / 4 - frac->shifty *
+			frac->zoom;
+	frac->draw.point2.x = (1. * WIN_X * frac->zoom) / 4 +
+		(WIN_X / 2) - (frac->m_shx * WIN_X * frac->zoom) / 4 - frac->shiftx *
+			frac->zoom;
+	frac->draw.point2.y = (0. * WIN_Y * frac->zoom) / 4 +
+		(WIN_Y / 2) - (frac->m_shy * WIN_Y * frac->zoom) / 4 - frac->shifty *
+			frac->zoom;
 	frac->color = 255;
+	frac->name = "Kox kurve";
 }
 
 t_tr	init_k(t_point p1, t_point p2)
@@ -75,6 +84,6 @@ void	kox_kurve(t_frac *frac)
 	draw_k_k(frac, frac->iter_line, init_k(frac->draw.point1,
 		frac->draw.point2));
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);
-	ft_putstr("Printing...\n");
+	ft_print_info2(frac);
 	ft_hooks(frac);
 }

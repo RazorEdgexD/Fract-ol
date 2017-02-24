@@ -41,10 +41,12 @@ void	bio(t_frac *frac)
 	int		i;
 	int		j;
 
-	i = 0;
+	i = -1;
 	j = 0;
 	frac->color = 27200;
-	while (i <= WIN_Y)
+	if (frac->zoom < 0.246637)
+		frac->zoom = 0.246637;
+	while (++i <= WIN_Y)
 	{
 		j = 0;
 		frac->y_win = ((i + frac->shifty - WIN_Y / 2) * 4. + (WIN_Y * 1.)
@@ -56,7 +58,6 @@ void	bio(t_frac *frac)
 			calc_bio(frac, i, j);
 			j++;
 		}
-		i++;
 	}
 	frac->name = "Bio";
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);

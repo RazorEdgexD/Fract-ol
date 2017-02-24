@@ -6,7 +6,7 @@
 /*   By: aosobliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 17:51:22 by aosobliv          #+#    #+#             */
-/*   Updated: 2017/02/13 19:50:14 by aosobliv         ###   ########.fr       */
+/*   Updated: 2017/02/24 16:44:37 by aosobliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include "../libft/libft.h"
 # include <math.h>
 # include "mlx.h"
-
-#include <stdio.h>
 
 typedef struct		s_point
 {
@@ -89,9 +87,14 @@ typedef struct		s_frac
 	int				text_y;
 	int				mouse_on;
 	char			*name;
-
 	struct s_draw	draw;
 }					t_frac;
+
+typedef struct		s_bon
+{
+	struct s_frac	fir;
+	struct s_frac	sec;
+}					t_bon;
 
 void				ft_image_pixel_put(t_frac *frac, int x, int y, int rgb);
 int					ft_hooks(t_frac *frac);
@@ -109,7 +112,11 @@ void				ft_mouse_zoom(t_frac * frac);
 void				ft_print_info(t_frac *frac);
 void				ft_print_info2(t_frac *frac);
 void				bio(t_frac *frac);
+void				reset(t_frac *frac);
+t_tr				calc_catpet(t_tr p);
 int					close_x(void *par);
+void				start_draw(t_bon frac);
+void				draw_carpet(t_frac *frac, t_tr p);
 int					ft_change_color(t_frac *frac);
 void				ft_brezen(t_frac *frac, t_draw *draw, t_point *t0,
 						t_point *t1);

@@ -35,6 +35,7 @@ SRCS = main.c										\
 			sinus.c									\
 			bio.c									\
 			put_info.c								\
+			ft_tools2.c								\
 
 BINS = $(SRCS:.c=.o)
 
@@ -51,7 +52,7 @@ libfclean:
 
 $(NAME): $(BINS)
 	make -C libft/
-	gcc -o $(NAME) $(BINS) $(FLAGS) $(MLX) $(LIB)
+	gcc -o $(NAME) $(FLAGS) $(BINS) $(MLX) $(LIB)
 
 %.o: %.c
 	gcc $(FLAGS) -c -o $@ $<

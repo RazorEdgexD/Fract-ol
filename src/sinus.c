@@ -47,12 +47,14 @@ void	sinus(t_frac *frac)
 	while (i <= WIN_Y)
 	{
 		j = 0;
-		frac->y_win = ((i + frac->shifty - WIN_Y / 2) * 4. + (WIN_Y * 1.)
+		frac->y_win = ((i + frac->shifty * frac->zoom
+			- WIN_Y / 2) * 4. + (WIN_Y * 1.)
 				* frac->m_shy * frac->zoom) / (WIN_Y * frac->zoom);
 		while (j <= WIN_X)
 		{
-			frac->x_win = ((j + frac->shiftx - 500.) * 4. + (1000. * 1.)
-				* frac->m_shx * frac->zoom) / (1000. * frac->zoom);
+			frac->x_win = ((j + frac->shiftx * frac->zoom
+				- 500.) * 4. + (1000. * 1.)
+					* frac->m_shx * frac->zoom) / (1000. * frac->zoom);
 			calc_sin(frac, i, j);
 			j++;
 		}

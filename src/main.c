@@ -102,18 +102,19 @@ void	check_draw(t_frac *frac)
 
 int		main(int argc, char **argv)
 {
-	t_frac	frac;
+	t_bon	frac;
 
 	if (argc == 2 || argc == 3)
 	{
-		check_type(argv[1], argv[2], &frac);
-		frac.mlx = mlx_init();
-		frac.color = 272;
-		frac.x_win = 0;
-		frac.y_win = 0;
-		frac.win = mlx_new_window(frac.mlx, WIN_X, WIN_Y, "Fractol");
-		frac.image = mlx_new_image(frac.mlx, WIN_X, WIN_Y);
-		check_draw(&frac);
+		check_type(argv[1], argv[2], &frac.fir);
+	//	start_draw(frac.fir);
+		frac.fir.mlx = mlx_init();
+		frac.fir.win = mlx_new_window(frac.fir.mlx, WIN_X, WIN_Y, "Fractol");
+		frac.fir.image = mlx_new_image(frac.fir.mlx, WIN_X, WIN_Y);
+		frac.fir.color = 272;
+		frac.fir.x_win = 0;
+		frac.fir.y_win = 0;
+ 		check_draw(&frac.fir);
 	}
 	else
 		draw_error();

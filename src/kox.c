@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aosobliv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/16 12:39:17 by aosobliv          #+#    #+#             */
-/*   Updated: 2017/02/16 12:39:31 by aosobliv         ###   ########.fr       */
+/*   Created: 2017/02/24 16:37:48 by aosobliv          #+#    #+#             */
+/*   Updated: 2017/02/24 17:01:38 by aosobliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 void	init_kox(t_frac *frac)
 {
-	frac->draw.point1.x = (200 + -frac->shiftx) * frac->zoom;
-	frac->draw.point1.y = (500 + -frac->shifty) * frac->zoom;
-	frac->draw.point2.x = (800 + -frac->shiftx) * frac->zoom;
-	frac->draw.point2.y = (500 + -frac->shifty) * frac->zoom;
+	frac->draw.point1.x = (-1. * WIN_X * frac->zoom) / 4. +
+		(WIN_X / 2) - (frac->m_shx * WIN_X * frac->zoom) / 4. - frac->shiftx *
+			frac->zoom;
+	frac->draw.point1.y = (WIN_Y / 2) - (frac->m_shy * WIN_Y * frac->zoom) / 4.
+		- frac->shifty * frac->zoom;
+	frac->draw.point2.x = (1. * WIN_X * frac->zoom) / 4. +
+		(WIN_X / 2) - (frac->m_shx * WIN_X * frac->zoom) / 4. - frac->shiftx *
+			frac->zoom;
+	frac->draw.point2.y = (WIN_Y / 2) - (frac->m_shy * WIN_Y * frac->zoom) / 4.
+		- frac->shifty *
+			frac->zoom;
 	frac->color = 255;
 	frac->name = "Kox";
 }
