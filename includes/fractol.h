@@ -116,8 +116,13 @@ void				reset(t_frac *frac);
 t_tr				calc_catpet(t_tr p);
 int					close_x(void *par);
 void				start_draw(t_bon frac);
+void				start_draw2(t_bon frac);
+void				check_draw(t_frac *frac);
+void				check_type(char *argv1, t_frac *frac);
+void				draw_error(void);
+void				init_frac(t_frac *frac);
 void				draw_carpet(t_frac *frac, t_tr p);
-int					ft_change_color(t_frac *frac);
+int					ft_change_color(t_frac *frac, int i);
 void				ft_brezen(t_frac *frac, t_draw *draw, t_point *t0,
 						t_point *t1);
 

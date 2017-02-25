@@ -33,7 +33,7 @@ void	ft_print_info(t_frac *frac)
 	ft_print_str(frac, "'1','2'       - Change iteration");
 	ft_print_str(frac, "'-', '+'      - Zoom in center");
 	ft_print_str(frac, "'Arrows'      - Move");
-	ft_print_str(frac, "'c'           - Change color");
+	ft_print_str(frac, "'c','v','b'   - Disco");
 	ft_print_str(frac, "'5'           - Restart");
 }
 
@@ -52,6 +52,6 @@ void	ft_print_info2(t_frac *frac)
 	ft_print_str(frac, "'pU','pD'     - Change iteration line Fractal");
 	ft_print_str(frac, "'-', '+'      - Zoom in center");
 	ft_print_str(frac, "'Arrows'      - Move");
-	ft_print_str(frac, "'c'           - Change color");
+	ft_print_str(frac, "'c','v','b'   - Disco");
 	ft_print_str(frac, "'5'           - Restart");
 }

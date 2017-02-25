@@ -16,9 +16,9 @@ void	additional_key(int keycode, t_frac *frac)
 {
 	if (keycode == 53)
 		exit(777);
-	if (keycode == 69)
-		frac->zoom *= 0.9;
 	if (keycode == 78)
+		frac->zoom *= 0.9;
+	if (keycode == 69)
 		frac->zoom *= 1.1;
 	if (keycode == 123)
 		frac->shiftx -= 25;
@@ -53,7 +53,11 @@ int		keys_for_win1(int keycode, t_frac *frac)
 			frac->mouse_on = 0;
 	}
 	if (keycode == 8)
-		ft_change_color(frac);
+		ft_change_color(frac, 1);
+	if (keycode == 9)
+		ft_change_color(frac, 10);
+	if (keycode == 11)
+		ft_change_color(frac, 100);
 	additional_key(keycode, frac);
 	mlx_destroy_image(frac->mlx, frac->image);
 	frac->image = mlx_new_image(frac->mlx, WIN_X, WIN_Y);
@@ -106,6 +110,5 @@ int		ft_hooks(t_frac *frac)
 		mlx_hook(frac->win, 6, 0, move_mouse, frac);
 	mlx_hook(frac->win, 17, 0L, close_x, frac);
 	mlx_mouse_hook(frac->win, key_mouse, frac);
-	ft_print_info(frac);
 	return (0);
 }

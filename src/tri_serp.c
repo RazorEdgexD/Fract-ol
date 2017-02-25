@@ -74,6 +74,5 @@ void	tri_serp(t_frac *frac)
 	draw_tri(frac, frac->iter_line, init_tr(frac->draw.point1,
 		frac->draw.point2, frac->draw.point3));
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);
-//	ft_print_info2(frac);
-//	ft_hooks(frac);
+	ft_print_info2(frac);
 }

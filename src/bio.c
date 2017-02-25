@@ -12,6 +12,8 @@
 
 #include "fractol.h"
 
+
+#include <stdio.h>
 void	calc_bio(t_frac *frac, int i, int j)
 {
 	double	x;
@@ -44,8 +46,8 @@ void	bio(t_frac *frac)
 	i = -1;
 	j = 0;
 	frac->color = 27200;
-	if (frac->zoom < 0.246637)
-		frac->zoom = 0.246637;
+	if (frac->zoom < 0.5)
+		frac->zoom = 0.5;
 	while (++i <= WIN_Y)
 	{
 		j = 0;
@@ -61,6 +63,5 @@ void	bio(t_frac *frac)
 	}
 	frac->name = "Bio";
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);
-//	ft_print_info(frac);
-//	ft_hooks(frac);
+	ft_print_info(frac);
 }

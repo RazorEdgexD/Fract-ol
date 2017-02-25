@@ -9,8 +9,6 @@
 /*   Updated: 2017/02/14 16:15:58 by aosobliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-
 
 #include "fractol.h"
 
@@ -104,44 +102,14 @@ int		main(int argc, char **argv)
 {
 	t_bon	frac;
 
+	if (argv[1])
+		check_type(argv[1], &frac.fir);
+	if (argv[2])
+	check_type(argv[2], &frac.sec);
 	if (argc == 2)
-	{
-		check_type(argv[1], &frac.fir);
-	//	start_draw(frac.fir);
-		frac.fir.mlx = mlx_init();
-		frac.fir.win = mlx_new_window(frac.fir.mlx, WIN_X, WIN_Y, "Fractol");
-		frac.fir.image = mlx_new_image(frac.fir.mlx, WIN_X, WIN_Y);
-		frac.fir.color = 272;
-		frac.fir.x_win = 0;
-		frac.fir.y_win = 0;
- 		check_draw(&frac.fir);
-		ft_print_info(&frac.fir);
-		ft_hooks(&frac.fir);
-		mlx_loop(frac.fir.mlx);
-	}
-	if (argc == 3)
-	{
-		check_type(argv[1], &frac.fir);
-		frac.fir.mlx = mlx_init();
-		frac.fir.win = mlx_new_window(frac.fir.mlx, WIN_X, WIN_Y, "Fractol");
-		frac.fir.image = mlx_new_image(frac.fir.mlx, WIN_X, WIN_Y);
-		frac.fir.color = 272;
-		frac.fir.x_win = 0;
-		frac.fir.y_win = 0;
- 		check_draw(&frac.fir);
-		ft_hooks(&frac.fir);
-
-		check_type(argv[2], &frac.sec);
-		frac.sec.mlx = frac.fir.mlx;
-		frac.sec.win = mlx_new_window(frac.sec.mlx, WIN_X, WIN_Y, "Fractol");
-		frac.sec.image = mlx_new_image(frac.sec.mlx, WIN_X, WIN_Y);
-		frac.sec.color = 272;
-		frac.sec.x_win = 0;
-		frac.sec.y_win = 0;
- 		check_draw(&frac.sec);
-		ft_hooks(&frac.sec);
-		mlx_loop(frac.fir.mlx);
-	}
+		start_draw(frac);
+	else if (argc == 3)
+		start_draw2(frac);
 	else
 		draw_error();
 	return (0);
