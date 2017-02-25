@@ -9,6 +9,8 @@
 /*   Updated: 2017/02/14 16:15:58 by aosobliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
+
 
 #include "fractol.h"
 
@@ -49,28 +51,26 @@ void	draw_error(void)
 	exit(666);
 }
 
-void	check_type(char *argv1, char *argv2, t_frac *frac)
+void	check_type(char *argv1, t_frac *frac)
 {
 	init_frac(frac);
-	if (argv2 == NULL)
-		argv2 = "NULL";
-	if (!ft_strcmp(argv1, "1") || !ft_strcmp(argv2, "1"))
+	if (!ft_strcmp(argv1, "1"))
 		frac->d_tri = 1;
-	if (!ft_strcmp(argv1, "2") || !ft_strcmp(argv2, "2"))
+	if (!ft_strcmp(argv1, "2"))
 		frac->d_julia = 1;
-	if (!ft_strcmp(argv1, "3") || !ft_strcmp(argv2, "3"))
+	if (!ft_strcmp(argv1, "3"))
 		frac->d_mandel = 1;
-	if (!ft_strcmp(argv1, "4") || !ft_strcmp(argv2, "4"))
+	if (!ft_strcmp(argv1, "4"))
 		frac->d_kox = 1;
-	if (!ft_strcmp(argv1, "5") || !ft_strcmp(argv2, "5"))
+	if (!ft_strcmp(argv1, "5"))
 		frac->d_burning = 1;
-	if (!ft_strcmp(argv1, "6") || !ft_strcmp(argv2, "6"))
+	if (!ft_strcmp(argv1, "6"))
 		frac->d_carpet = 1;
-	if (!ft_strcmp(argv1, "7") || !ft_strcmp(argv2, "7"))
+	if (!ft_strcmp(argv1, "7"))
 		frac->d_kox_k = 1;
-	if (!ft_strcmp(argv1, "8") || !ft_strcmp(argv2, "8"))
+	if (!ft_strcmp(argv1, "8"))
 		frac->d_sin = 1;
-	if (!ft_strcmp(argv1, "9") || !ft_strcmp(argv2, "9"))
+	if (!ft_strcmp(argv1, "9"))
 		frac->d_bio = 1;
 	if (frac->d_julia == 0 && frac->d_kox == 0 && frac->d_mandel == 0 &&
 		frac->d_burning == 0 && frac->d_tri == 0 && frac->d_carpet == 0 &&
@@ -104,9 +104,9 @@ int		main(int argc, char **argv)
 {
 	t_bon	frac;
 
-	if (argc == 2 || argc == 3)
+	if (argc == 2)
 	{
-		check_type(argv[1], argv[2], &frac.fir);
+		check_type(argv[1], &frac.fir);
 	//	start_draw(frac.fir);
 		frac.fir.mlx = mlx_init();
 		frac.fir.win = mlx_new_window(frac.fir.mlx, WIN_X, WIN_Y, "Fractol");
@@ -115,6 +115,32 @@ int		main(int argc, char **argv)
 		frac.fir.x_win = 0;
 		frac.fir.y_win = 0;
  		check_draw(&frac.fir);
+		ft_print_info(&frac.fir);
+		ft_hooks(&frac.fir);
+		mlx_loop(frac.fir.mlx);
+	}
+	if (argc == 3)
+	{
+		check_type(argv[1], &frac.fir);
+		frac.fir.mlx = mlx_init();
+		frac.fir.win = mlx_new_window(frac.fir.mlx, WIN_X, WIN_Y, "Fractol");
+		frac.fir.image = mlx_new_image(frac.fir.mlx, WIN_X, WIN_Y);
+		frac.fir.color = 272;
+		frac.fir.x_win = 0;
+		frac.fir.y_win = 0;
+ 		check_draw(&frac.fir);
+		ft_hooks(&frac.fir);
+
+		check_type(argv[2], &frac.sec);
+		frac.sec.mlx = frac.fir.mlx;
+		frac.sec.win = mlx_new_window(frac.sec.mlx, WIN_X, WIN_Y, "Fractol");
+		frac.sec.image = mlx_new_image(frac.sec.mlx, WIN_X, WIN_Y);
+		frac.sec.color = 272;
+		frac.sec.x_win = 0;
+		frac.sec.y_win = 0;
+ 		check_draw(&frac.sec);
+		ft_hooks(&frac.sec);
+		mlx_loop(frac.fir.mlx);
 	}
 	else
 		draw_error();

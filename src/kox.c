@@ -78,6 +78,6 @@ void	kox(t_frac *frac)
 	init_kox(frac);
 	draw_k(frac, frac->iter_line, init_p(frac->draw.point1, frac->draw.point2));
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);
-	ft_print_info2(frac);
-	ft_hooks(frac);
+//	ft_print_info2(frac);
+//	ft_hooks(frac);
 }

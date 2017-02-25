@@ -16,9 +16,9 @@ void	additional_key(int keycode, t_frac *frac)
 {
 	if (keycode == 53)
 		exit(777);
-	if (keycode == 78)
-		frac->zoom *= 0.9;
 	if (keycode == 69)
+		frac->zoom *= 0.9;
+	if (keycode == 78)
 		frac->zoom *= 1.1;
 	if (keycode == 123)
 		frac->shiftx -= 25;
@@ -106,6 +106,6 @@ int		ft_hooks(t_frac *frac)
 		mlx_hook(frac->win, 6, 0, move_mouse, frac);
 	mlx_hook(frac->win, 17, 0L, close_x, frac);
 	mlx_mouse_hook(frac->win, key_mouse, frac);
-	mlx_loop(frac->mlx);
+	ft_print_info(frac);
 	return (0);
 }

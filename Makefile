@@ -6,7 +6,7 @@
 #    By: aosobliv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/08 13:28:10 by aosobliv          #+#    #+#              #
-#    Updated: 2017/02/22 19:32:10 by aosobliv         ###   ########.fr        #
+#    Updated: 2017/02/25 14:50:18 by aosobliv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS = main.c										\
 			bio.c									\
 			put_info.c								\
 			ft_tools2.c								\
+			ft_tools3.c								\
 
 BINS = $(SRCS:.c=.o)
 
@@ -57,10 +58,12 @@ $(NAME): $(BINS)
 %.o: %.c
 	gcc $(FLAGS) -c -o $@ $<
 
-clean: libclean
+clean:
+	make -C libft/ clean
 	/bin/rm -f $(BINS)
 
-fclean: libfclean clean
+fclean: clean
+	make -C libft/ fclean
 	/bin/rm -f $(NAME)
 
 re: fclean all

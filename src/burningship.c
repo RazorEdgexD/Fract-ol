@@ -60,6 +60,6 @@ void	burningship(t_frac *frac)
 	}
 	frac->name = "BurningShip";
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);
-	ft_print_info(frac);
-	ft_hooks(frac);
+//	ft_print_info(frac);
+//	ft_hooks(frac);
 }

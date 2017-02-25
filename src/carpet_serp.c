@@ -103,6 +103,4 @@ void	carp_serp(t_frac *frac)
 	d(frac, frac->iter_line, new_carp(frac->draw.point1,
 		frac->draw.point2, frac->draw.point3, frac->draw.point4));
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->image, 0, 0);
-	ft_print_info2(frac);
-	ft_hooks(frac);
 }
