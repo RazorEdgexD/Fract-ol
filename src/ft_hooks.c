@@ -58,6 +58,8 @@ int		keys_for_win1(int keycode, t_frac *frac)
 		ft_change_color(frac, 10);
 	if (keycode == 11)
 		ft_change_color(frac, 100);
+	if (keycode == 7)
+		ft_change_color(frac, 999);
 	additional_key(keycode, frac);
 	mlx_destroy_image(frac->mlx, frac->image);
 	frac->image = mlx_new_image(frac->mlx, WIN_X, WIN_Y);

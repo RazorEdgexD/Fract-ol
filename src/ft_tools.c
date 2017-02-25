@@ -67,7 +67,12 @@ void	ft_brezen(t_frac *frac, t_draw *draw, t_point *t0, t_point *t1)
 
 int		ft_change_color(t_frac *frac, int i)
 {
-	frac->color += 1000 * i;
+	if (i == 999 && frac->color != 272)
+		frac->color = 272;
+	else if (i == 999 && frac->color != 2050)
+		frac->color = 2050;
+	else
+		frac->color += 1000 * i;
 	return (0);
 }
 

@@ -14,7 +14,6 @@
 
 void	start_draw(t_bon frac)
 {
-//	check_type(argv[1], &frac.fir);
 	frac.fir.mlx = mlx_init();
 	frac.fir.win = mlx_new_window(frac.fir.mlx, WIN_X, WIN_Y, "Fractol");
 	frac.fir.image = mlx_new_image(frac.fir.mlx, WIN_X, WIN_Y);
@@ -36,10 +35,8 @@ void	start_draw2(t_bon frac)
 	frac.sec.color = 272;
 	frac.fir.x_win = 0;
 	frac.fir.y_win = 0;
-//	check_type(argv[1], &frac.fir);
 	check_draw(&frac.fir);
 	ft_hooks(&frac.fir);
-//	check_type(argv[2], &frac.sec);
 	frac.sec.mlx = frac.fir.mlx;
 	frac.sec.win = mlx_new_window(frac.sec.mlx, WIN_X, WIN_Y, "Fractol");
 	frac.sec.image = mlx_new_image(frac.sec.mlx, WIN_X, WIN_Y);
