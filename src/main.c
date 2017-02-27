@@ -105,7 +105,7 @@ int		main(int argc, char **argv)
 	if (argv[1])
 		check_type(argv[1], &frac.fir);
 	if (argv[2])
-	check_type(argv[2], &frac.sec);
+		check_type(argv[2], &frac.sec);
 	if (argc == 2)
 		start_draw(frac);
 	else if (argc == 3)

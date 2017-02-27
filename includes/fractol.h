@@ -108,7 +108,7 @@ void				kox(t_frac *frac);
 void				kox_kurve(t_frac *frac);
 void				sinus(t_frac *frac);
 void				check_draw(t_frac *frac);
-void				ft_mouse_zoom(t_frac * frac);
+void				ft_mouse_zoom(t_frac *frac);
 void				ft_print_info(t_frac *frac);
 void				ft_print_info2(t_frac *frac);
 void				bio(t_frac *frac);

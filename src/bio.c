@@ -12,8 +12,6 @@
 
 #include "fractol.h"
 
-
-#include <stdio.h>
 void	calc_bio(t_frac *frac, int i, int j)
 {
 	double	x;
